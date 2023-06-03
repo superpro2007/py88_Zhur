@@ -1,44 +1,17 @@
+import telebot
 import config
-import requests
 
-# https://api.telegram.org/bot{API_KEY}/{METHOD}
+bot = telebot.TeleBot(config.TG_BOT_TOKEN, parse_mode='HTML')
 
-offset = 0
-limit = 1
-timeout = 20
 
-while True:
-    # api-endpoint
-    URL = f"https://api.telegram.org/bot{config.TG_BOT_TOKEN}/getUpdates"
+@bot.message_handler(commands=['start', 'help'])
+def send_welcome(message: telebot.types.Message):
+    bot.send_message(chat_id=message.from_user.id, text='darova chel')
 
-    params = {
-        'offset': offset,
-        'limit': limit,
-        'timeout': timeout
-    }
 
-    # sending get request and saving the response as response object
-    response = requests.get(url=URL, params=params)
+@bot.message_handler(func=lambda m: True)
+def echo_all(message):
+    bot.reply_to(message, message.text)
 
-    # extracting data in json format
-    data = response.json()
-    result = data['result']
-    if result:
-        element = result[0]
-        update_id = element['update_id']
-        offset = update_id + 1
-        message = element['message']
-        text = message['text']
 
-        # printing the output
-        print(text)
-
-# {
-#     'ok': True,
-#     'result': [
-#         {
-#             'update_id': 85451127,
-#             'message': {'message_id': 1, 'from': {'id': 89679113, 'is_bot': False, 'first_name': 'Yako', 'last_name': 'Tako', 'username': 'Vex_machine', 'language_code': 'en'}, 'chat': {'id': 89679113, 'first_name': 'Yako', 'last_name': 'Tako', 'username': 'Vex_machine', 'type': 'private'}, 'date': 1685644004, 'text': '/start', 'entities': [{'offset': 0, 'length': 6, 'type': 'bot_command'}]}
-#         }
-#     ]
-# }
+bot.infinity_polling()

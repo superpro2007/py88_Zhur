@@ -1,5 +1,6 @@
 import re
 
+import psycopg2
 import telebot
 
 import config
@@ -16,6 +17,16 @@ def is_text_matches(message: telebot.types.Message) -> bool:
     else:
         return True
 
+
+def save_to_db(food: dict):
+    conn = psycopg2.connect(f"dbname={config.DB_NAME} user={config.DB_USER} password={config.DB_PASSWORD} "
+                            f"host={config.DB_HOST} port={config.DB_PORT}")
+    cur = conn.cursor()
+    cur.execute("INSERT INTO food (name, proteins, fats, carbohydrates, user_id) VALUES (%s, %s, %s, %s, %s)",
+                (food['name'], food['proteins'], food['fats'], food['carbohydrates'], food['user_id']))
+    conn.commit()
+    cur.close()
+    conn.close()
 
 def parse_food(text: str) -> dict:
     text_parts = re.findall(REGEX, text, re.MULTILINE)[0]
@@ -35,8 +46,8 @@ def parse_food(text: str) -> dict:
 def handle_food(message: telebot.types.Message):
     food = parse_food(message.text)
     food['user_id'] = message.from_user.id
+    save_to_db(food)
     bot.reply_to(message=message, text='eda sohranena')
-    print(food)
 
 
 @bot.message_handler(func=lambda m: True)

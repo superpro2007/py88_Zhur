@@ -9,5 +9,6 @@ def food_get():
 
 @app.post('/food')
 def food_post():
-    storage.save_to_db(request.json)
+    for food in request.json:
+        storage.save_to_db(food)
     return 'ok'

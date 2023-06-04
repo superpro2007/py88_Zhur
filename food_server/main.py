@@ -1,13 +1,11 @@
 import re
 
 import psycopg2
-import telebot
 
 import config
 
 REGEX = r"(((\w+\s*)+)\n)((\d+)\n)((\d+)\n)(\d+)"
 
-bot = telebot.TeleBot(config.TG_BOT_TOKEN, parse_mode='HTML')
 
 
 def is_text_matches(message: telebot.types.Message) -> bool:
@@ -42,15 +40,12 @@ def parse_food(text: str) -> dict:
     }
 
 
-@bot.message_handler(func=is_text_matches)
 def handle_food(message: telebot.types.Message):
     food = parse_food(message.text)
     food['user_id'] = message.from_user.id
     save_to_db(food)
-    bot.reply_to(message=message, text='eda sohranena')
+    print('eda sohranena')
 
-
-@bot.message_handler(func=lambda m: True)
 def invite(message):
     text = '''
 vvedite edy v formate:
@@ -68,7 +63,5 @@ yabloko
 1
 10
 '''
-    bot.send_message(chat_id=message.from_user.id, text= text)
+    print(text)
 
-
-bot.infinity_polling()

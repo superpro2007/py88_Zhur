@@ -1,5 +1,6 @@
 from flask import Flask
-
+from flask import request
+import storage
 app = Flask(__name__)
 
 @app.get('/food')
@@ -8,4 +9,5 @@ def food_get():
 
 @app.post('/food')
 def food_post():
-    return 'Hello hui'
+    storage.save_to_db(request.json)
+    return 'ok'

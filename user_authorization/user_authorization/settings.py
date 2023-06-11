@@ -54,7 +54,7 @@ ROOT_URLCONF = 'user_authorization.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'user_authorization/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

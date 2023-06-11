@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from user_authorization.views import HelloView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('authorize/', HelloView.as_view())
 ]

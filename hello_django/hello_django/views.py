@@ -5,4 +5,7 @@ from django.shortcuts import render
 
 class HelloView(View):
     def get(self, request: HttpRequest):
-        return render(request, 'hello.html')
+        color = {
+            'color': 'red'
+        }
+        return render(request, 'hello.html', context=color)

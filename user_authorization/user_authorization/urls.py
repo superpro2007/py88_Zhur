@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from user_authorization.views import HelloView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('authorize/', HelloView.as_view())
-]
+    path('authorize/', HelloView.as_view()),
+
+]+static(settings.STATIC_URL)

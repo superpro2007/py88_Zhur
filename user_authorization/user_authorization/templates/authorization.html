@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Authorization</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/authorization.css'%}">
 </head>
 <body>
 <form method="post">{% csrf_token %}
-    <label for="email">Email:</label><br>
-    <input id="email" name="email" type="text"><br>
-    <label for="password">Password:</label><br>
-    <input id="password" name="password" type="text"><br><br>
+    <label for="email" class="email">Email:</label><br>
+    <input id="email" class="email" name="email" type="text"><br>
+    <label for="password" class="password">Password:</label><br>
+    <input id="password" class="password" name="password" type="text"><br><br>
     <input type="submit" value="Submit">
 </form>
 </body>

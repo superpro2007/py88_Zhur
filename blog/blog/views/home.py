@@ -9,3 +9,4 @@ class Home(View):
         my_list = ['my blog', 'about me', 'donate']
         context={'articles': my_list}
         return render(request, 'home.html', context=context)
+

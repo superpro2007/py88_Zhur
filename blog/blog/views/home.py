@@ -7,6 +7,6 @@ from django.shortcuts import render
 class Home(View):
     def get(self, request: HttpRequest) -> HttpResponse:
         my_list = ['my blog', 'about me', 'donate']
-        context={'articles': my_list}
+        context = {'articles': my_list}
         return render(request, 'home.html', context=context)
 

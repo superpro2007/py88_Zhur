@@ -12,4 +12,5 @@ class CreateArticle(View):
         text = request.POST.get('text')
         article = Article(title=title, text=text)
         article.save()
+        self.request.session['message'] = 'Success!'
         return redirect('home')

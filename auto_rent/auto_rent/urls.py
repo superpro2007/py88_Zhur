@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rent.views import IndexView
+from auto.views import CreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view()),
+    path('auto/create/', CreateView.as_view()),
 
 ]

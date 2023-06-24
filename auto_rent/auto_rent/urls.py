@@ -21,7 +21,7 @@ from auto.views import CreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view()),
-    path('auto/create/', CreateView.as_view()),
+    path('', IndexView.as_view(), name='index'),
+    path('auto/create/', CreateView.as_view(), name='create_auto'),
 
 ]

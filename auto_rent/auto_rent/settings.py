@@ -54,7 +54,11 @@ ROOT_URLCONF = "auto_rent.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "rent/templates", BASE_DIR / "auto/templates"],
+        "DIRS": [
+            BASE_DIR / "rent/templates",
+            BASE_DIR / "auto/templates",
+            BASE_DIR / "auto_rent/templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

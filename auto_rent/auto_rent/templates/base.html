@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %} Car Rent {% endblock %}</title>
+  </head>
+
+  <body>
+    <div id="header">
+      {% block header %}
+      <a href="{% url 'index' %}">Home</a>
+      <a href="{% url 'create_auto' %}">Create Auto</a>
+
+      {% endblock %}
+    </div>
+
+    <div id="content">{% block content %}{% endblock %}</div>
+
+    <div id="footer">{% block footer %} {% endblock %}</div>
+  </body>
+</html>

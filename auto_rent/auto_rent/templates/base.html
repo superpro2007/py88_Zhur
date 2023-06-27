@@ -9,10 +9,9 @@
       {% block header %}
       <a href="{% url 'index' %}">Home</a>
       <a href="{% url 'create_auto' %}">Create Auto</a>
-
       {% endblock %}
     </div>
-
+    <br><br>
     <div id="content">{% block content %}{% endblock %}</div>
 
     <div id="footer">{% block footer %} {% endblock %}</div>

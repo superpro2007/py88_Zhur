@@ -1,2 +1,16 @@
 {% extends "base.html" %}
-{% block content %}hi{% endblock %}
+{% block content %}
+<form method="post">{% csrf_token %}
+    <label for="car_brand">Brand</label>
+    <input id="car_brand" name="car_brand" type="text">&nbsp;
+
+    <label for="car_model">Model</label>
+    <input id="car_model" name="car_model" type="text">&nbsp;
+
+    <label for="vin">VIN</label>
+    <input id="vin" name="vin" type="text">
+    <br><br>
+
+    <input type="submit" value="Submit">
+</form>
+{% endblock %}

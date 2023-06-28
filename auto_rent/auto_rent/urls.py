@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from rent.views import IndexView
 from auto.views import CreateView as AutoCreateView
+from user.views import CreateView as UserCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
     path('auto/create/', AutoCreateView.as_view(), name='create_auto'),
+    path('user/create/', UserCreateView.as_view(), name='create_user'),
 
 ]

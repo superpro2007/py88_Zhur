@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "auto",
+    "auto", 
+    "user"
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,7 @@ TEMPLATES = [
             BASE_DIR / "rent/templates",
             BASE_DIR / "auto/templates",
             BASE_DIR / "auto_rent/templates",
+            BASE_DIR / "user/templates"
         ],
         "APP_DIRS": True,
         "OPTIONS": {

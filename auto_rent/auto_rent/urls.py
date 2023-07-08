@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rent.views import IndexView
+from rent.views import IndexView, CreateView as RentCreateView
 from auto.views import CreateView as AutoCreateView
 from customer.views import CreateView as CustomerCreateView
 
@@ -25,5 +25,6 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('auto/create/', AutoCreateView.as_view(), name='create_auto'),
     path('customer/create/', CustomerCreateView.as_view(), name='create_customer'),
+    path('rent/create/', RentCreateView.as_view(), name='create_rent'),
 
 ]

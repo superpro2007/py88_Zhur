@@ -1,16 +1,16 @@
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse, HttpRequest
-from user.models import User
+from customer.models import Customer
 
 class CreateView(View):
     def get(self, request: HttpRequest) -> HttpResponse:
-        return render(request, "create_user.html")
+        return render(request, "create_customer.html")
 
     def post(self, request: HttpRequest) -> HttpResponse:
-        user_name = request.POST.get("user_name", "")
+        customer_name = request.POST.get("customer_name", "")
         telephone_number = request.POST.get("telephone_number", "")
-        user = User(user=user_name, number=telephone_number)
-        user.save()
+        customer = Customer(customer=customer_name, number=telephone_number)
+        customer.save()
 
-        return render(request, "create_user.html")
+        return render(request, "create_customer.html")

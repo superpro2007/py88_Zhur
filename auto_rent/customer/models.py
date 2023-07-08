@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class User(models.Model):
-    user = models.TextField()
+class Customer(models.Model):
+    customer = models.TextField()
     number = models.TextField()
     

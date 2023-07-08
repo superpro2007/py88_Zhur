@@ -1,2 +1,8 @@
 {% extends "base.html" %}
-{% block content %}hello{% endblock %}
+{% block content %}
+<ul>
+    {% for rent in rents %}
+    <li>{{ rent.brand }} {{rent.model}} - {{rent.name}}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
